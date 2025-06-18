@@ -48,7 +48,7 @@ Pendekatan ini menggunakan data interaksi pengguna–film berupa rating dan memb
 
 ## Data Understanding
 
-Dataset yang digunakan dalam proyek kali ini berjudul [Movie Lens Small Latest Dataset](https://www.kaggle.com/datasets/ayushimishra2809/movielens-dataset/data). Dataset ini berisi data rating dan free tagging (label bebas yang diberikan user kepada film) dari website [movielens.org](https://movielens.org/), sebuah layanan rekomendasi film. Untuk lebih detilnya, dataset ini berisi 105339 rating dan 10329 film. Data ini dibuat oleh 668 pengguna antara 29 Maret 1996 dan 24 September 2018.
+Dataset yang digunakan dalam proyek kali ini berjudul [Movie Lens Dataset](https://www.kaggle.com/datasets/ayushimishra2809/movielens-dataset/data). Dataset ini berisi data rating dan free tagging (label bebas yang diberikan user kepada film) dari website [movielens.org](https://movielens.org/), sebuah layanan rekomendasi film. Untuk lebih detilnya, dataset ini berisi 105339 rating dan 10329 film. Data ini dibuat oleh 668 pengguna antara 29 Maret 1996 dan 24 September 2018.
 
 Setelah dataset diunduh dan diekstrak, akan didapatkan file sebagai berikut.
 - movies.csv
@@ -58,7 +58,7 @@ Pada proyek kali ini, file yang akan digunakan meliputi movies.csv dan ratings.c
 
 ### **Sumber Data**
 
-Dataset dapat diakses dan diunduh melalui tautan berikut: [[Movie Lens Small Latest Dataset](https://www.kaggle.com/datasets/ayushimishra2809/movielens-dataset/data)]
+Dataset dapat diakses dan diunduh melalui tautan berikut: [[Movie Lens Dataset](https://www.kaggle.com/datasets/ayushimishra2809/movielens-dataset/data)]
 
 ### **Struktur Dataset**
 
@@ -91,24 +91,24 @@ Analisis ini merupakan analisis pada tiap fitur dengan tujuan untuk mengetahui k
 
 - **Melihat genre unik dalam data**
 
-  ![Screenshot 2025-05-31 at 14-39-01 Submission_Recommendation_System ipynb - Colab](https://github.com/user-attachments/assets/80f00e1c-4677-46ab-b818-edeea4225a0b)
+  ![Submission_Recommendation_System ipynb - Colab](https://github.com/AddinRizal/Film-Recommender/blob/main/image/1.png?raw=true)
 
 - **Top 10 userId pemberi rating terbanyak**
 
-  ![Screenshot 2025-05-31 at 14-32-32 Submission_Recommendation_System ipynb - Colab](https://github.com/user-attachments/assets/3c0b6bcf-0384-4133-8e0b-9f8164c75cdb)
+  ![Submission_Recommendation_System ipynb - Colab](https://github.com/AddinRizal/Film-Recommender/blob/main/image/2.png?raw=true)
 
 - **Distribusi rating dalam dataset**
 
-  ![Screenshot 2025-05-31 at 14-38-09 Submission_Recommendation_System ipynb - Colab](https://github.com/user-attachments/assets/ab6eda82-ca64-40ca-8700-df74191a6bf4)
+  ![Submission_Recommendation_System ipynb - Colab](https://github.com/AddinRizal/Film-Recommender/blob/main/image/3.png?raw=true)
 
 Dari analisis univariate yang dilakukan didapatkan beberapa poin, sebagai berikut:
 
-- Dataset proyek ini memiliki 9742 data film unik. Dengan 20 kategori genre unik, meliputi Action hingga Western. Selain itu, terdapat pula genre '(no genres listed)' yang menunjukkan ada beberapa film yang data genrenya kurang lengkap
-- Terdapat 34 data Genre bernilai '(no genres listed)' dalam dataset. Untuk proyek ini, kita akan menggantinya menjadi satu kata untuk mengurangi term saat proses TFIDF nantinya
-- Dataset pada proyek ini memiliki 610 data pengguna unik, serta 100836 data rating yang diberikan pada film
+- Dataset proyek ini memiliki 10329 data film unik. Dengan 20 kategori genre unik, meliputi Action hingga Western. Selain itu, terdapat pula genre '(no genres listed)' yang menunjukkan ada beberapa film yang data genrenya kurang lengkap
+- Terdapat 7 data Genre bernilai '(no genres listed)' dalam dataset. Untuk proyek ini, kita akan menggantinya menjadi satu kata untuk mengurangi term saat proses TFIDF nantinya
+- Dataset pada proyek ini memiliki 668 data pengguna unik, serta 105339 data rating yang diberikan pada film
 - Jumlah data film unik pada movies_df dan ratings_df berbeda. Dapat disimpulkan bahwa tidak semua film dalam movies_df sudah diberi rating oleh pengguna
 - Tidak ditemukan adanya nilai kosong dan duplikat pada data, sehingga penanganan tidak diperlukan
-- Ditemukan bahwa pengguna dengan userId 414 merupakan pengguna yang paling banyak memberikan rating pada film (2698 rating), disusur dengan userId 599(2478 rating), serta userId 474 (2108 rating)
+- Melalui eksplorasi, ditemukan bahwa pengguna dengan userId 668 merupakan pengguna yang paling banyak memberikan rating pada film (2698 rating), disusur dengan userId 599(2478 rating), serta userId 474 (2108 rating)
 - Rating yang diberikan pengguna dalam dataset cukup beragam dari 0.5 hingga 5.0. Rating 4.0 merupakan rating terbanyak yang diberikan pengguna pada film, sedangkan 0.5 adalah rating dengan jumlah paling sedikit yang diberikan pengguna pada film
 
 #### Analisis Multivariate
@@ -117,15 +117,15 @@ Analisis Multivariate adalah jenis analisis statistik atau eksplorasi data yang 
 
 - **Top 10 film dengan rating terbaik diurutkan berdasarkan rating dan jumlah rating**
 
-  ![Screenshot 2025-05-31 at 14-43-34 Submission_Recommendation_System ipynb - Colab](https://github.com/user-attachments/assets/2e3c8d2c-388f-48e8-af50-f740f9992eb0)
+  ![Submission_Recommendation_System ipynb - Colab](https://github.com/AddinRizal/Film-Recommender/blob/main/image/4.png?raw=true)
 
 Dari gambar di atas, ditemukan bahwa Belle époque (1992), Come and See (Idi i smotri) (1985), Enter the Void (2009), Heidi Fleiss: Hollywood Madam (1995), Jonah Who Will Be 25 in the Year 2000 (Jonas qui aura 25 ans en l'an 2000) (1976), Lamerica (1994), dan Lesson Faust (1994) merupakan film dengan rating terbaik (5.0) jika diurutkan berdasarkan rating dan jumlah rating. Jumlah rating yang dimiliki oleh film tersebut adalah 2, yang mana sangat sedikit
 
 - **Top 10 paling banyak diberi rating**
 
-  ![Screenshot 2025-05-31 at 14-45-30 Submission_Recommendation_System ipynb - Colab](https://github.com/user-attachments/assets/25bb5d4c-7bc4-4350-a7ae-8c0c61180708)
+  ![Submission_Recommendation_System ipynb - Colab](https://github.com/AddinRizal/Film-Recommender/blob/main/image/5.png?raw=true)
 
-Dari gambar di atas, ditemukan bahwa Forrest Gump (1994) merupakan film yang memiliki jumlah rating terbanyak yang diberikan pengguna (329 rating), disusul oleh Shawshank Redemption, The (1994) (317 rating), dan Pulp Fiction (1994) (307 rating)
+Dari gambar di atas, ditemukan bahwa Pulp Fiction (1994) merupakan film yang memiliki jumlah rating terbanyak yang diberikan pengguna (325 rating), disusul oleh Forrest Gump, The (1994) (311 rating), dan Shawshank Redemption, The (1994) (308 rating)
 
 ---
 
@@ -246,45 +246,45 @@ Rekomendasi untuk: **Jumanji (1995)**
 
 | No  | Judul Film                                                 | Genre                      |
 | --- | ---------------------------------------------------------- | -------------------------- |
-| 1   | The Cave of the Golden Rose (1991)                         | Adventure Children Fantasy |
-| 2   | NeverEnding Story II: The Next Chapter, The (1990)         | Adventure Children Fantasy |
-| 3   | NeverEnding Story, The (1984)                              | Adventure Children Fantasy |
-| 4   | NeverEnding Story III, The (1994)                          | Adventure Children Fantasy |
-| 5   | Alice Through the Looking Glass (2016)                     | Adventure Children Fantasy |
-| 6   | Gulliver's Travels (1996)                                  | Adventure Children Fantasy |
-| 7   | Chronicles of Narnia: The Lion, the Witch and the Wardrobe | Adventure Children Fantasy |
-| 8   | Return to Oz (1985)                                        | Adventure Children Fantasy |
-| 9   | Bridge to Terabithia (2007)                                | Adventure Children Fantasy |
-| 10  | Chronicles of Narnia: Prince Caspian, The (2008)           | Adventure Children Fantasy |
+| 1   | Chronicles of Narnia: The Lion, the Witch and the Wardrobe, The (2005)                         | Adventure Children Fantasy |
+| 2   | Return to Oz (1985)	         | Adventure Children Fantasy |
+| 3   | Indian in the Cupboard, The (1995)                              | Adventure Children Fantasy |
+| 4   | Chronicles of Narnia: Prince Caspian, The (2008)                          | Adventure Children Fantasy |
+| 5   | Golden Compass, The (2007)                     | Adventure Children Fantasy |
+| 6   | Darby O'Gill and the Little People (1959)                                  | Adventure Children Fantasy |
+| 7   | Escape to Witch Mountain (1975) | Adventure Children Fantasy |
+| 8   | Magic in the Water (1995)                                        | Adventure Children Fantasy |
+| 9   | NeverEnding Story, The (1984)                                | Adventure Children Fantasy |
+| 10  | Water Horse: Legend of the Deep, The (2007)           | Adventure Children Fantasy |
 
 ### 2. Model Collaborative Filtering
 
-Rekomendasi untuk User ID: **318**
+Rekomendasi untuk User ID: **461**
 
 **Film dengan Rating Tinggi dari User**
 
 | No  | Judul Film                                | Genre                |
 | --- | ----------------------------------------- | -------------------- |
-| 1   | Monty Python's The Meaning of Life (1983) | Comedy               |
-| 2   | Woman Under the Influence, A (1974)       | Drama                |
-| 3   | Summer's Tale, A (Conte d'été) (1996)     | Comedy Drama Romance |
-| 4   | Black Dynamite (2009)                     | Action Comedy        |
-| 5   | Nasu: Summer in Andalusia (2003)          | Animation            |
+| 1   | Christmas Story, A (1983) | Children Comedy               |
+| 2   | Vampire Hunter D: Bloodlust (Banpaia hantâ D) (2000)       | Animation Fantasy Horror Sci-Fi                |
+| 3   | Nine Queens (Nueve reinas) (2000)     | Crime Thriller |
+| 4   | Dawn of the Dead (1978)                     | Drama Horror        |
+| 5   | Kung Fu Hustle (Gong fu) (2004)          | Action Comedy            |
 
-**Top 10 Rekomendasi Film untuk userId 318**
+**Top 10 Rekomendasi Film untuk userId 461**
 
 | No  | Judul Film                                 | Genre                        |
 | --- | ------------------------------------------ | ---------------------------- |
-| 1   | Paths of Glory (1957)                      | Drama War                    |
-| 2   | Jules and Jim (Jules et Jim) (1961)        | Drama Romance                |
-| 3   | Trial, The (Procès, Le) (1962)             | Drama                        |
-| 4   | Adam's Rib (1949)                          | Comedy Romance               |
-| 5   | Bad Boy Bubby (1993)                       | Drama                        |
+| 1   | Notorious (1946)                      | Film-Noir Romance Thriller                    |
+| 2   | Touch of Evil (1958)        | Crime Film-Noir Thriller                |
+| 3   | Raise the Red Lantern (Da hong deng long gao gao gua) (1991)             | Drama                        |
+| 4   | Splendor in the Grass (1961)                          | Romance               |
+| 5   | Samouraï, Le (Godson, The) (1967)                       | Crime Drama Thriller                        |
 | 6   | Memories of Murder (Salinui chueok) (2003) | Crime Drama Mystery Thriller |
-| 7   | Son of Rambow (2007)                       | Children Comedy Drama        |
-| 8   | Day of the Doctor, The (2013)              | Adventure Drama Sci-Fi       |
-| 9   | Captain Fantastic (2016)                   | Drama                        |
-| 10  | Band of Brothers (2001)                    | Action Drama War             |
+| 7   | Persepolis (2007)                       | Drama        |
+| 8   | Dr. Horrible's Sing-Along Blog (2008)              | Comedy Drama Musical Sci-Fi       |
+| 9   | Cosmos (1980)                   | Documentary                        |
+| 10  | Black Mirror (2011)                    | Drama Sci-Fi             |
 
 ---
 
@@ -326,16 +326,16 @@ Rekomendasi untuk: **Jumanji (1995)**
 
 | No  | Judul Film                                                 | Genre                      | Relevan |
 | --- | ---------------------------------------------------------- | -------------------------- | ------- |
-| 1   | The Cave of the Golden Rose (1991)                         | Adventure Children Fantasy | Ya      |
-| 2   | NeverEnding Story II: The Next Chapter, The (1990)         | Adventure Children Fantasy | Ya      |
-| 3   | NeverEnding Story, The (1984)                              | Adventure Children Fantasy | Ya      |
-| 4   | NeverEnding Story III, The (1994)                          | Adventure Children Fantasy | Ya      |
-| 5   | Alice Through the Looking Glass (2016)                     | Adventure Children Fantasy | Ya      |
-| 6   | Gulliver's Travels (1996)                                  | Adventure Children Fantasy | Ya      |
-| 7   | Chronicles of Narnia: The Lion, the Witch and the Wardrobe | Adventure Children Fantasy | Ya      |
-| 8   | Return to Oz (1985)                                        | Adventure Children Fantasy | Ya      |
-| 9   | Bridge to Terabithia (2007)                                | Adventure Children Fantasy | Ya      |
-| 10  | Chronicles of Narnia: Prince Caspian, The (2008)           | Adventure Children Fantasy | Ya      |
+| 1   | Chronicles of Narnia: The Lion, the Witch and the Wardrobe, The (2005)                         | Adventure Children Fantasy | Ya      |
+| 2   | Return to Oz (1985)	         | Adventure Children Fantasy | Ya      |
+| 3   | Indian in the Cupboard, The (1995)                              | Adventure Children Fantasy | Ya      |
+| 4   | Chronicles of Narnia: Prince Caspian, The (2008)                          | Adventure Children Fantasy | Ya      |
+| 5   | Golden Compass, The (2007)                     | Adventure Children Fantasy | Ya      |
+| 6   | Darby O'Gill and the Little People (1959)                                  | Adventure Children Fantasy | Ya      |
+| 7   | Escape to Witch Mountain (1975) | Adventure Children Fantasy | Ya      |
+| 8   | Magic in the Water (1995)                                        | Adventure Children Fantasy | Ya      |
+| 9   | NeverEnding Story, The (1984)                                | Adventure Children Fantasy | Ya      |
+| 10  | Water Horse: Legend of the Deep, The (2007)           | Adventure Children Fantasy | Ya      |
 
 Terlihat pada tabel di atas, bahwa Jumlah rekomendasi yang relevan adalah adalah 10. Oleh sebab itu, maka dapat disimpulkan `nilai precision@k untuk model ini adalah 10/10 atau 100%` (hasil dari jumlah rekomendasi yang relevan dibagi dengan total rekomendasi)
 
@@ -354,34 +354,34 @@ Dari gambar grafik pelatihan tersebut RMSE dapat diketahui beberapa poin sebagai
 
 ##### Menampilkan Rekomendasi
 
-Rekomendasi untuk User ID: **318**
+Rekomendasi untuk User ID: **461**
 
 Film dengan Rating Tinggi dari User
 
 | No  | Judul Film                                | Genre                |
 | --- | ----------------------------------------- | -------------------- |
-| 1   | Monty Python's The Meaning of Life (1983) | Comedy               |
-| 2   | Woman Under the Influence, A (1974)       | Drama                |
-| 3   | Summer's Tale, A (Conte d'été) (1996)     | Comedy Drama Romance |
-| 4   | Black Dynamite (2009)                     | Action Comedy        |
-| 5   | Nasu: Summer in Andalusia (2003)          | Animation            |
+| 1   | Christmas Story, A (1983) | Children Comedy               |
+| 2   | Vampire Hunter D: Bloodlust (Banpaia hantâ D) (2000)       | Animation Fantasy Horror Sci-Fi                |
+| 3   | Nine Queens (Nueve reinas) (2000)     | Crime Thriller |
+| 4   | Dawn of the Dead (1978)                     | Drama Horror        |
+| 5   | Kung Fu Hustle (Gong fu) (2004)          | Action Comedy            |
 
-Top 10 Rekomendasi Film untuk userId 318
+Top 10 Rekomendasi Film untuk userId 461
 
 | No  | Judul Film                                 | Genre                        |
 | --- | ------------------------------------------ | ---------------------------- |
-| 1   | Paths of Glory (1957)                      | Drama War                    |
-| 2   | Jules and Jim (Jules et Jim) (1961)        | Drama Romance                |
-| 3   | Trial, The (Procès, Le) (1962)             | Drama                        |
-| 4   | Adam's Rib (1949)                          | Comedy Romance               |
-| 5   | Bad Boy Bubby (1993)                       | Drama                        |
+| 1   | Notorious (1946)                      | Film-Noir Romance Thriller                    |
+| 2   | Touch of Evil (1958)        | Crime Film-Noir Thriller                |
+| 3   | Raise the Red Lantern (Da hong deng long gao gao gua) (1991)             | Drama                        |
+| 4   | Splendor in the Grass (1961)                          | Romance               |
+| 5   | Samouraï, Le (Godson, The) (1967)                       | Crime Drama Thriller                        |
 | 6   | Memories of Murder (Salinui chueok) (2003) | Crime Drama Mystery Thriller |
-| 7   | Son of Rambow (2007)                       | Children Comedy Drama        |
-| 8   | Day of the Doctor, The (2013)              | Adventure Drama Sci-Fi       |
-| 9   | Captain Fantastic (2016)                   | Drama                        |
-| 10  | Band of Brothers (2001)                    | Action Drama War             |
+| 7   | Persepolis (2007)                       | Drama        |
+| 8   | Dr. Horrible's Sing-Along Blog (2008)              | Comedy Drama Musical Sci-Fi       |
+| 9   | Cosmos (1980)                   | Documentary                        |
+| 10  | Black Mirror (2011)                    | Drama Sci-Fi             |
 
-Dari tabel hasil rekomendasi di atas, dapat disimpulkan bahwa hasil rekomendasi cukup presisi dalam merekomendasikan film untuk userId 318. Terlihat bahwa film yang direkomendasikan setidaknya memiliki satu genre yang mirip dengan film yang diberi rating user. Rata-rata film yang direkomendasikan rilis di bawah tahun 2010, kecuali film Captain Fantastic (2016).
+Dari tabel hasil rekomendasi di atas, dapat disimpulkan bahwa hasil rekomendasi cukup presisi dalam merekomendasikan film untuk userId 461. Terlihat bahwa film yang direkomendasikan setidaknya memiliki satu genre yang mirip dengan film yang diberi rating user. Rata-rata film yang direkomendasikan rilis di bawah tahun 2012.
 
 ---
 
