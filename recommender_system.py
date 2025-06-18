@@ -199,7 +199,7 @@ popular_movies = df.groupby(by='title').agg({
 popular_movies
 
 """**Insight**:
-- Melaui eksplorasi, ditemukan bahwa Belle époque (1992), Come and See (Idi i smotri) (1985), Enter the Void (2009), Heidi Fleiss: Hollywood Madam (1995), Jonah Who Will Be 25 in the Year 2000 (Jonas qui aura 25 ans en l'an 2000) (1976), Lamerica (1994), dan Lesson Faust (1994) merupakan film dengan rating terbaik (5.0) jika diurutkan berdasarkan rating dan jumlah rating. Jumlah rating yang dimiliki oleh film tersebut adalah 2, yang mana sangat sedikit
+- Melaui eksplorasi, ditemukan bahwa Gentlemen of Fortune (Dzhentlmeny udachi) (1972), Interstate 60 (2002), Memories (Memorîzu) (1995), Nobody Knows (Dare mo shiranai) (2004), Resident Evil: Retribution (2012), Schizopolis (1996), dan Wings (1927) merupakan film dengan rating terbaik (5.0) jika diurutkan berdasarkan rating dan jumlah rating. Jumlah rating yang dimiliki oleh film tersebut adalah 2, yang mana sangat sedikit
 - Melalui ekplorasi, ditemukan bahwa Pulp Fiction (1994) merupakan film yang memiliki jumlah rating terbanyak yang diberikan pengguna (325 rating), disusul oleh Forrest Gump, The (1994) (311 rating), dan Shawshank Redemption, The (1994) (308 rating)
 
 ### **Data Preparation**
