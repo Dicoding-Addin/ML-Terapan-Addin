@@ -1,5 +1,7 @@
 # Laporan Proyek Machine Learning - Addin Hadi Rizal
-
+## Penilaian Proyek
+Proyek ini berhasil mendapatkan bintang 5/5 pada submission dicoding course machine learning terapan.
+![submission](/image/6.png)
 ## Project Overview
 
 Seiring dengan bertambahnya jumlah konten digital seperti film dan serial, pengguna semakin sulit dalam menemukan tontonan yang sesuai dengan preferensinya. Menurut Ricci et al. (2022), tantangan utama dalam industri hiburan digital adalah menyajikan rekomendasi yang personal dan relevan guna meningkatkan kepuasan serta keterlibatan pengguna. Sistem rekomendasi hadir sebagai solusi penting untuk membantu pengguna menyaring informasi dan menemukan konten yang sesuai dengan minat mereka secara otomatis.
